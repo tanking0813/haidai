@@ -1,0 +1,5 @@
+天纵网络，
+Appkey: 93039904 
+secret：c6c65ec0d6094d8cb34db6b5f9c1ef4c 
+账号：13333013935 
+Url:http://api.pre.seatent.com
