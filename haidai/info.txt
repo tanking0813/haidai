@@ -3,3 +3,6 @@ Appkey: 93039904
 secret：c6c65ec0d6094d8cb34db6b5f9c1ef4c 
 账号：13333013935 
 Url:http://api.pre.seatent.com
+password :SZC18633016683
+
+http://api.pre.seatent.com/ssoapi/v2/login/login?appkey=93039904&password=SZC18633016683&timestamp=1564558515&username=13333013935&toSign=9B6FF2AF9C389B4BF9B67CEBCDC57337C6800ABB
