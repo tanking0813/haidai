@@ -6,3 +6,7 @@ Url:http://api.pre.seatent.com
 password :SZC18633016683
 
 http://api.pre.seatent.com/ssoapi/v2/login/login?appkey=93039904&password=SZC18633016683&timestamp=1564558515&username=13333013935&toSign=9B6FF2AF9C389B4BF9B67CEBCDC57337C6800ABB
+
+
+
+https://api.zeropartin.com/?s=Test.world&sign=3f062804c86502332a844997aa042b97&AppId=20190601&AppSecret=iz5gnwfzg3siwh21cq2ju0xiamy3katv
