@@ -10,3 +10,22 @@ http://api.pre.seatent.com/ssoapi/v2/login/login?appkey=93039904&password=SZC186
 
 
 https://api.zeropartin.com/?s=Test.world&sign=3f062804c86502332a844997aa042b97&AppId=20190601&AppSecret=iz5gnwfzg3siwh21cq2ju0xiamy3katv
+
+http://api.pre.seatent.com/api/v2/order/createOrders?accountId=03d2388a3b054022b042b7562ad8fea6&address=dddddd&addressId=7cba23de2d894e73a0ddf7c0edf23ba8&appkey=86065876&buyAmounts=%7B%22a36dc2d3d5cd444789faacf113d5ec02%22:%7B%222021-06_1_1%22:%22%23,%23%22%7D%7D&buyType=1&goodsIds=a36dc2d3d5cd444789faacf113d5ec02&lifes=2021-06&memberId=03d2388a3b054022b042b7562ad8fea6&mobile=15122299780&name=%E6%88%90%E9%83%BD&nums=1&productNums=1&timestamp=1564739793012&token=5a86bee20ec24248af2bb04d1b81f655&topSign=80FDCC6B26CB9BD57D81F9528B1E381A697A604A
+
+accountId: 03d2388a3b054022b042b7562ad8fea6
+address: dddddd
+addressId: 7cba23de2d894e73a0ddf7c0edf23ba8
+appkey: 86065876
+buyAmounts: {"a36dc2d3d5cd444789faacf113d5ec02":{"2021-06_1_1":"#,#"}}
+buyType: 1
+goodsIds: a36dc2d3d5cd444789faacf113d5ec02
+lifes: 2021-06
+memberId: 03d2388a3b054022b042b7562ad8fea6
+mobile: 15122299780
+name: 成都
+nums: 1
+productNums: 1
+timestamp: 1564739793012
+token: 5a86bee20ec24248af2bb04d1b81f655
+topSign: 80FDCC6B26CB9BD57D81F9528B1E381A697A604A
