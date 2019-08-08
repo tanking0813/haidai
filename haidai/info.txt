@@ -5,6 +5,11 @@ secret：c6c65ec0d6094d8cb34db6b5f9c1ef4c
 Url:http://api.pre.seatent.com
 password :SZC18633016683
 
+
+118.190.200.40:22   root
+
+FNNWri3mwxa5zxx7
+
 http://api.pre.seatent.com/ssoapi/v2/login/login?appkey=93039904&password=SZC18633016683&timestamp=1564558515&username=13333013935&toSign=9B6FF2AF9C389B4BF9B67CEBCDC57337C6800ABB
 
 
@@ -29,3 +34,21 @@ productNums: 1
 timestamp: 1564739793012
 token: 5a86bee20ec24248af2bb04d1b81f655
 topSign: 80FDCC6B26CB9BD57D81F9528B1E381A697A604A
+
+
+accountId: 03d2388a3b054022b042b7562ad8fea6
+address: eweeeee
+appkey: 93039904
+area: 110101
+buyAmount: {"a36dc2d3d5cd444789faacf113d5ec02":{"2021-06_1_1":"#,#"}}
+goodsId: 	
+identification: 362502199106073246
+lifes: 2021-06
+memberId: 03d2388a3b054022b042b7562ad8fea6
+mobile: 15122299780
+name: chedu
+nums: 1
+productNums: 1
+timestamp: 1564823695421
+token: f83bd7dc490a4b3d83a97e77dd8adc3f
+topSign: F2D6AF6ED90C20C291C73DEB55C154CA56B35D38
