@@ -1,0 +1,13 @@
+{
+  "payment_list": {
+	    "trade_no": "子订单号",
+	    "charge_id": "报关支付单号",
+	    "inital_request": "请求支付公司接口原始请求参数",
+	    "inital_response": "请求支付公司接口原始应答参数",
+	    "service_time": "支付单获取时间",
+	    "ver_dept": "核验机构，1-网银，2-银联，3-其他",
+	    "pay_transaction_id": "可在央行认可的机构验证的交易唯一流水号",
+	    "pay_type": "用户支付的类型。1-app 2-pc 3-扫码 4-其他",
+	    "pay_way": "用户支付的方式。1-支付宝 2-微信"
+	}
+}

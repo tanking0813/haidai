@@ -1,0 +1,49 @@
+{
+  "orders": {
+    //订单号
+    "order_sn": "SH20190626223835096447-20085",
+    //下单时间
+    "create_time": "20190627105050",
+    //收货人手机号
+    "consignee_mobile": "13786487002",
+    //收货人姓名
+    "consignee_name": "陈雅珍",
+    //身份证号码
+    "id_card": "430424198209293828",
+    //收货人所在省
+    "province": "湖南省",
+    //收货人所在城市
+    "city": "衡阳市",
+    //收货人所在区
+    "district": "蒸湘区",
+    //收货人详细地址
+    "address": "西二环路13号政务中心",
+    //税费
+    "tax": 8.1,
+    //运费
+    "postal_price": 0,
+    //商品金额
+    "goods_price": 89,
+    //订单金额
+    "order_price": 97.1,
+    //发货方式
+    "delivery_type": "1",
+    "order_goods": [
+      {
+        //商品编码
+        "sku_no": "HEA2037",
+        //购买数量
+        "buy_quantity": "1",
+        //供货商ID
+        "supplier_id": "1",
+        //税费
+        "tax": 8.1,
+        //购买价格
+        "buy_price": "89.00"
+      }
+    ],
+    //是否允许拆单
+    "IsAllowSplit": 1
+  }
+}
+
