@@ -71,6 +71,7 @@ class Goods extends NotORM {
 		return $this->getORM()->where("goods_id",$goods_id)->update($data);		
 	}
 
+
     function executeSql($sql){
         return $this->getORM()->executeSql($sql);
     
@@ -98,4 +99,11 @@ class Goods extends NotORM {
             ->count('goods_id');
         return intval($total);
     }
+
+    //全球购回调商品信息修改
+    public function request_update($goods_no,$data)
+    {   
+        return $this->getORM()->where("goods_no",$goods_no)->update($data); 
+    }
+
 }

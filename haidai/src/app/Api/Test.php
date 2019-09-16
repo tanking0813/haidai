@@ -2,6 +2,7 @@
 namespace App\Api;
 use PhalApi\Api;
 use App\Domain\Suppliers\Haidai\Common;
+use App\Domain\Suppliers\Haidai\Goods;
 /**
  * 验签接口
  * @author: dogstar <chanzonghuang@gmail.com> 2014-10-04
@@ -14,7 +15,9 @@ class Test extends Api {
             ),
         );
     }
-
+    protected function filterCheck()
+    {
+    }    
     /**
      * 验签接口
      * @desc 测试签名专用服务
@@ -32,8 +35,11 @@ class Test extends Api {
         );
     }
 	public function world() {
-		$hdcomm = new Common();
+		/*$hdcomm = new Common();
 		return $hdcomm->Login();
-		return array('title' => 'Hello World! php');
+		return array('title' => 'Hello World! php');*/
+        $hdgoods = new Goods();
+        $ret = $hdgoods->getCategory();
+        return $ret;
 	}
 }

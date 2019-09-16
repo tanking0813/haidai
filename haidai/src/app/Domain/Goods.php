@@ -40,10 +40,8 @@ class Goods {
         $model = new ModelGoods();
         $items = $model->getListItems($state, $page, $perpage);
         $total = $model->getListTotal($state);
-
         $rs['items'] = $items;
         $rs['total'] = $total;
-
         return $rs;
     }
     public function getListstock($sku_nos){
@@ -53,8 +51,6 @@ class Goods {
         foreach ($list as $k => $v) {
             $data[$v['sku_no']] = $v['stock'];
         }
-
-
         return $data;
     }
 
@@ -109,6 +105,11 @@ class Goods {
         return $list;
     }
 
-    
+    //全球购回调商品信息修改
+    public function request_update($goods_no,$data)
+    {
+        $model = new ModelGoods();
+        return $model->request_update($goods_no, $data);
+    }
 
 }

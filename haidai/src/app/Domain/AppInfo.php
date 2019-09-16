@@ -45,6 +45,11 @@ class AppInfo {
         return $model->getAppNotice($shop_id);        
     }
    
+   public function getallinfo(){
+        $model = new ModelAppInfo();
+        return $model->getallinfo();        
+    }
+
 
 
 }

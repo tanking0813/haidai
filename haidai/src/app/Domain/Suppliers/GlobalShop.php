@@ -8,21 +8,23 @@ namespace App\Domain\Suppliers;//声明命名空间
  
 class GlobalShop{
 
-    private $key = 'tianzong';
+    private $key = 'TIANZONG-GPSLMALL';
 
-    private $secret ='f67d2deaa2bf906d1f5a3fd108575d77';
+    public $secret ='a8c52db02c9cb124ef92cdd4ceacec7f';
 
     private $url;
 
     public  function __construct(){
-       // $this->url = 'http://openapi.oceanz.cn/m.api?';
-      $this->url = 'http://106.75.191.107/m.api?';
+       $this->url = 'http://openapi.oceanz.cn/m.api?';
+      // $this->url = 'http://106.75.191.107/m.api?';
     } 
 
 	/**
 	 * 发送请求
 	 */
-	private function curlRequest($url, $data) {
+	public function curlRequest($url, $data) {
+      //生成签名  客户密钥+时间戳+json数据
+      // $signature = md5(111);
       $headers = array('Content-Type: application/x-www-form-urlencoded');
       $curl = curl_init(); // 启动一个CURL会话
       curl_setopt($curl, CURLOPT_URL, $url); // 要访问的地址
@@ -42,10 +44,9 @@ class GlobalShop{
 	}
 
   /**
-   * 公共 参数
+   *  公共 参数
    *  $requestRes请求数据
    *  $InterfaceName 接口名称
-
    */
   private function CommonRequest($InterfaceName,$requestRes = [])
   {
@@ -56,7 +57,6 @@ class GlobalShop{
     $http_request['_sm'] = 'MD5';
     return  $http_request;
   }
-
 
 	//加密
 	private function encryption($request = '')
@@ -85,20 +85,19 @@ class GlobalShop{
    *  @param  $InterfaceName 请求接口地址
    *  @param  array  $InterfaceName
    */
-
   public  function  RequestMethod($InterfaceName,$requestRes=[]){
     $requestreturn = $this->CommonRequest($InterfaceName,$requestRes);
     $return = json_decode($this->curlRequest($this->url,$requestreturn),true);
+    var_dump($return);die;
     return   $this->request_return(
                                   $return['returnCode'],
                                   empty($return['success'])?$return['errorMsg']:'成功',
-                                  empty($return['success'])?'':$return['content'] 
-                                  ) ;
+                                  empty($return['success'])?'':$return['content']
+                                  );
   }
 
-
   //全球购获取所有商品
-    public function getGoodsAll($page=1,$pageSize=6,$return_list=[])
+    public function getGoodsAll($page=1,$pageSize=50,$return_list=[])
     {
         $InterfaceName = 'buyer.productPageQuery';
         $requestRes =['pageIndex'=>$page,'pageSize'=>$pageSize]; 
@@ -106,6 +105,7 @@ class GlobalShop{
         $return_list[] = $return_res['data']['items'];
         $num = $return_res['data']['pageInfo']['totalCount']/$pageSize;
         $page++;
+      
         if(!empty($return_res['data']['items']) && $page < $num +1 ){
            return  $this->getGoodsAll($page,$pageSize,$return_list);
         }
@@ -197,17 +197,12 @@ class GlobalShop{
     public function creationOrder()
     {
         //商品名称
-        $orderGoodsItems = [
+        $orderGoodsItems =  [
                               [
-                              "itemId"=>"CC16BE0AE2DCB8338",
-                              "count"=>"2",
+                              "itemId"=>"CC16D195389EE5150",
+                              "count"=>"1",
                               "price"=>"13", //商品单价
                               "gnum"=>"1"
-                              ],[
-                              "itemId"=>"CC16A3759EB8F9687",
-                              "count"=>"1",
-                              "price"=>"14",
-                              "gnum"=>"2"
                               ]
                             ];
         //订货地址
@@ -221,11 +216,11 @@ class GlobalShop{
                             ];
         //订购人信息
         $orderBuyerInfo = [
-                            'buyerName' =>'天纵网络',
-                            'buyerIdNo' =>'610423199207020000'   //身份证
+                            'buyerName' =>'刘严',
+                            'buyerIdNo' =>'610423199207020019'   //身份证
                           ];
         $shippingFee = 0;  //运费
-        $totalPrice  = 40; //订单总金额
+        $totalPrice  = 13; //订单总金额
         $discountPrice =   0; //优惠金额
         $discountDesc = '';               
         $InterfaceName = 'buyer.createOrder';
@@ -240,7 +235,7 @@ class GlobalShop{
                         'actualPrice'=>$totalPrice + $shippingFee - $discountPrice,
                         'shippingFee'=>$shippingFee,
                         'discountPrice'=>$discountPrice,
-                        'discountDesc'=>$itemId,
+                        'discountDesc'=>'无',
                         'orderBuyerInfo'=>$orderBuyerInfo,
                         'orderAddressItem'=>$orderAddressItem,
                         'orderGoodsItems'=>$orderGoodsItems,
@@ -256,11 +251,50 @@ class GlobalShop{
           return  $this->request_return('1004','参数错误',[]);
       }
       $InterfaceName = 'buyer.cancelOrder';
-      $requestRes  = [
+      $requestRes  =  [
                         'merchantOrderNo'=>$merchantOrderNo,
                       ];
       $return_order =  json_decode($this->RequestMethod($InterfaceName,$requestRes),true);
       return $return_order;
+    }
+    
+    /*
+    *支付请求接口
+    * 参数内容 
+      merchantOrderNo 是 string  商户订单号
+      actualPrice 是 string  实付金额(单位:元)
+      productName 是 string  产品名称
+      payType 是 string  支付类型 公众号(WEIXIN_GZH)、小程序(WEIXIN_XCX)、微信扫码（WEIXIN_NATIVE）
+      openId  是 string  微信用户openId
+      appId 否 string  微信appId (使用微信公众号、微信小程序必填；微信扫码非必填)
+      merchantNotifyUrl 是 string  支付成功回调地址
+    */
+    public function requestPay()
+    {
+      $requestRes  =  [
+                        'merchantOrderNo'=>'CC16D195389EE5150',
+                        'actualPrice'=>'13',
+                        'productName'=>'Unicharm 尤妮佳 化妆棉超吸收省水1/2 40片',
+                        'payType'=>'WEIXIN_GZH',
+                        'openId'=>'oIB1ZwjTxA4UE2x6st5LtaW9Q6hI',
+                        'appId'=>'wxd693f21b2b11c0e4',
+                        'merchantNotifyUrl'=>'http://new.runjia366.com/task/GlobalShop.php?type=7',
+                      ];
+      $InterfaceName = 'buyer.requestPay';
+      $return_pay =  json_decode($this->RequestMethod($InterfaceName,$requestRes),true);
+      return $return_pay;
+    }
+
+    // nginx接收headers数据
+    public function em_getallheaders()
+    {
+        $headers = [];
+        foreach ($_SERVER as $name => $value) {
+            if (substr($name, 0, 5) == 'HTTP_') {
+                $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+            }
+        }
+        return $headers;
     }
 
 }

@@ -38,4 +38,12 @@ class AppInfo extends NotORM {
 
     }           
 
+    public function getallinfo()
+    {
+        return $this->getORM()
+                    ->where( 'app_status', 1 )
+                    ->select('app_secret', 'app_name','notice_url')
+                    ->fetchAll();
+    }
+
 }

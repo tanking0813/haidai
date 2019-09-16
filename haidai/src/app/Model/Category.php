@@ -23,9 +23,14 @@ class Category extends NotORM {
                         "category_id"
 
                     )->fetchOne();
-    }  
-
-
+    }
+     
+    function executeSql($sql){
+        return $this->getORM()->executeSql($sql);
+    }
+    function getFieldFormField($fieldname,$fieldval,$getonefield){
+      return $this->getORM()->where($fieldname,$fieldval)->select($getonefield)->fetchOne();
+    }
       /**
      * 行云 产品分类对应数据库
      */
